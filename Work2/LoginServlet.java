@@ -14,9 +14,7 @@ public class LoginServlet extends HttpServlet {
 		if("admin".equals(username) && "123456".equals(password)) {
 
 			ServletContext context = getServletContext();
-
 			RequestDispatcher dispatcher = context.getNamedDispatcher("dispatcher");
-			System.out.println("test success");
 			dispatcher.forward(req, res);
 		}else {
 			throw new RuntimeException("Login failed.");
