@@ -8,19 +8,19 @@ import org.junit.jupiter.api.Test;
 import static org.easymock.EasyMock.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-class UserServiceTest {
+public class UserServiceTest {
     public UserService userService;
     public UserDao userDao;
     @BeforeEach
     public void init() {
         userService = new UserService();
         userDao = EasyMock.createMock(UserDao.class);
+        userService.setUserDao(userDao);
     }
 
     @Test
     public void loginVerifyTest1() {
-        userService.setUserDao(userDao);
-        String username = "123";
+        String username = "shk001";
         String password = "123";
         expect(userDao.verifyUsername(username)).andReturn(Boolean.TRUE);
         expect(userDao.verifyPassword(username,password)).andReturn(Boolean.TRUE);
@@ -31,9 +31,8 @@ class UserServiceTest {
 
     @Test
     public void loginVerifyTest2() {
-        userService.setUserDao(userDao);
-        String username = "123";
-        String password = "123";
+        String username = "shk001";
+        String password = "12345";
         expect(userDao.verifyUsername(username)).andReturn(Boolean.TRUE);
         expect(userDao.verifyPassword(username,password)).andReturn(Boolean.FALSE);
         replay(userDao);
@@ -44,8 +43,8 @@ class UserServiceTest {
     @Test
     public void loginVerifyTest3() {
         userService.setUserDao(userDao);
-        String username = "123";
-        String password = "123";
+        String username = "shk003";
+        String password = "114514";
         expect(userDao.verifyUsername(username)).andReturn(Boolean.FALSE);
 //        expect(userDao.verifyPassword(username,password)).andReturn(Boolean.TRUE);
         replay(userDao);
@@ -56,7 +55,7 @@ class UserServiceTest {
     @Test
     public void userRegisterTest1() {
         userService.setUserDao(userDao);
-        String username = "123";
+        String username = "shk001";
         String password = "123";
         expect(userDao.addUser(EasyMock.<User>anyObject())).andReturn(Boolean.TRUE);
         replay(userDao);
@@ -67,7 +66,7 @@ class UserServiceTest {
     @Test
     public void userRegisterTest2() {
         userService.setUserDao(userDao);
-        String username = "123";
+        String username = "shk001";
         String password = "123";
         expect(userDao.addUser(EasyMock.<User>anyObject())).andReturn(Boolean.FALSE);
         replay(userDao);

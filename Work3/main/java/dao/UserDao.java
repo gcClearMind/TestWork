@@ -30,7 +30,8 @@ public class UserDao {
 	// 验证密码是否正确
 	public boolean verifyPassword(String username, String password) {
 		List queryList = hibernateTemplate.find("select password from User where username=?", username);
-
-		return ( queryList.get(0).toString() ).equals(password);
+//		System.out.println(queryList.isEmpty());
+		if(queryList.isEmpty()) return false;
+		else return ( queryList.get(0).toString() ).equals(password);
 	}
 }
