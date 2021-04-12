@@ -22,7 +22,7 @@ class UserDaoTest {
     @Test
     public void addUserTest1() {
         userDao.setHibernateTemplate(hibernateTemplate);
-        String username = "123";
+        String username = "shk001";
         String password = "123";
         User user = new User();
         user.setUsername(username);
@@ -38,7 +38,7 @@ class UserDaoTest {
     @Test
     public void addUserTest2() {
         userDao.setHibernateTemplate(hibernateTemplate);
-        String username = "123";
+        String username = "shk001";
         String password = "123";
         User user = new User();
         user.setUsername(username);
@@ -55,7 +55,7 @@ class UserDaoTest {
     @Test
     public void verifyUsernameTest1() {
         userDao.setHibernateTemplate(hibernateTemplate);
-        String username = "123";
+        String username = "shk001";
         List<User> users= new ArrayList<User>();
         expect((List<User>)hibernateTemplate.find("from User where username=?", username)).andReturn(users);
         replay(hibernateTemplate);
@@ -66,7 +66,7 @@ class UserDaoTest {
     @Test
     public void verifyUsernameTest2() {
         userDao.setHibernateTemplate(hibernateTemplate);
-        String username = "123";
+        String username = "shk001";
         String password = "123";
         User user = new User();
         user.setUsername(username);

@@ -25,25 +25,25 @@ class LoginActionTest  extends StrutsSpringTestCase {
         userService = createMock(UserService.class);
     }
 
-    @Test
-    public void test(){
-        initServletMockObjects();
-        ActionProxy proxy = getActionProxy("/loginAction");
-        LoginAction loginAction = (LoginAction) proxy.getAction();
-        assertNotNull(loginAction);
-        String username = "123";
-        String password = "123";
-        Map session = new HashMap();
-        loginAction.setUserService(userService);
-        loginAction.setUsername(username);
-        loginAction.setPassword(password);
-        loginAction.setSession(session);
-
-        expect(userService.loginVerify("123","123")).andReturn(Boolean.TRUE);
-        replay(userService);
-        assertEquals("success",loginAction.execute());
-        verify(userService);
-    }
+//    @Test
+//    public void test(){
+//        initServletMockObjects();
+//        ActionProxy proxy = getActionProxy("/loginAction");
+//        LoginAction loginAction = (LoginAction) proxy.getAction();
+//        assertNotNull(loginAction);
+//        String username = "123";
+//        String password = "123";
+//        Map session = new HashMap();
+//        loginAction.setUserService(userService);
+//        loginAction.setUsername(username);
+//        loginAction.setPassword(password);
+//        loginAction.setSession(session);
+//
+//        expect(userService.loginVerify("123","123")).andReturn(Boolean.TRUE);
+//        replay(userService);
+//        assertEquals("success",loginAction.execute());
+//        verify(userService);
+//    }
 
     @Test
     public void validateTest1() {
